@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Apply Outpass</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+
+    <!-- Top Navbar -->
+    <div class="navbar">
+        <h1>Apply Outpass</h1>
+        <a href="/dashboard" class="logout-btn">Back</a>
+    </div>
+
+    <!-- Centered Form -->
+    <div class="outpass-center">
+        <div class="form-card">
+
+            <h2>Outpass Request Form</h2>
+
+            <form action="/outpass" method="POST">
+
+                <!-- Student Name -->
+                <label>Full Name</label>
+                <input type="text" name="name" value="<%= student.name %>" readonly>
+
+                <!-- Register Number -->
+                <label>Register Number</label>
+                <input type="text" name="regno" value="<%= student.regno %>" readonly>
+
+                <!-- Department -->
+                <label>Department</label>
+                <input type="text" name="department" value="<%= student.department %>" readonly>
+
+                <!-- Year -->
+                <label>Year</label>
+                <input type="text" name="year" value="<%= student.year %>" readonly>
+
+                <!-- Room Number -->
+                <label>Room Number</label>
+                <input type="text" name="room_number" value="<%= student.room_number || '' %>" readonly>
+
+                <!-- Parent Phone Number -->
+                <label>Parent Phone Number</label>
+                <input type="text" name="parent_phone" value="<%= student.parent_phone || '' %>" readonly>
+
+                <!-- Select Warden -->
+                <label>Select Warden</label>
+                <select name="warden_id" required>
+                    <option value="">Select Warden</option>
+
+                    <% if (wardens && wardens.length > 0) { %>
+
+                        <% wardens.forEach(warden => { %>
+
+                            <option value="<%= warden.id %>">
+                                <%= warden.name %>
+                            </option>
+
+                        <% }) %>
+
+                    <% } else { %>
+
+                        <option disabled>No wardens available</option>
+
+                    <% } %>
+
+                </select>
+
+                <!-- Reason -->
+                <label>Reason</label>
+                <textarea name="reason" rows="4" placeholder="Enter reason for outpass" required></textarea>
+
+                <!-- Out Date -->
+                <label>Out Date</label>
+                <input type="date" name="out_date" required>
+
+                <!-- Out Time -->
+                <label>Out Time</label>
+                <input type="time" name="out_time" required>
+
+                <!-- Return Date -->
+                <label>Expected Return Date</label>
+                <input type="date" name="return_date" required>
+
+                <!-- Return Time -->
+                <label>Expected Return Time</label>
+                <input type="time" name="return_time" required>
+
+                <!-- Submit -->
+                <button type="submit" class="action-btn">Submit Request</button>
+
+            </form>
+
+        </div>
+    </div>
+
+</body>
+</html>

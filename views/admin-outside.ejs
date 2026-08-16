@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Students Outside Hostel</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+
+<div class="navbar">
+    <h1>Students Currently Outside Hostel</h1>
+    <a href="/admin-dashboard" class="logout-btn">Back</a>
+</div>
+
+<div class="table-container">
+
+<table>
+
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Register No</th>
+            <th>Department</th>
+            <th>Year</th>
+            <th>Warden</th>
+            <th>Exit Time</th>
+            <th>Status</th>
+        </tr>
+    </thead>
+
+    <tbody>
+
+    <% if (students.length > 0) { %>
+
+        <% students.forEach(student => { %>
+
+        <tr>
+
+            <td><%= student.name %></td>
+
+            <td><%= student.regno %></td>
+
+            <td><%= student.department %></td>
+
+            <td><%= student.year %></td>
+
+            <td><%= student.warden_name || 'Not Assigned' %></td>
+
+            <td>
+                <%= student.security_exit_at ? student.security_exit_at.toLocaleString() : '-' %>
+            </td>
+
+            <td><%= student.status %></td>
+
+        </tr>
+
+        <% }) %>
+
+    <% } else { %>
+
+        <tr>
+            <td colspan="7" style="text-align:center;">
+                No students are currently outside the hostel.
+            </td>
+        </tr>
+
+    <% } %>
+
+    </tbody>
+
+</table>
+
+</div>
+
+</body>
+</html>

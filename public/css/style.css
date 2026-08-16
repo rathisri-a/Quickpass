@@ -1,0 +1,580 @@
+/* =========================
+   QUICKPASS RESPONSIVE THEME
+========================= */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:"Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body{
+    background:#eef2f7;
+    color:#2c3e50;
+    min-height:100vh;
+}
+
+/* =========================
+   NAVBAR
+========================= */
+
+.navbar{
+    width:95%;
+    margin:15px auto;
+    background:#32495f;
+    color:white;
+    border-radius:16px;
+    padding:18px 25px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    box-shadow:0 8px 20px rgba(0,0,0,0.15);
+}
+
+.navbar h1{
+    font-size:2rem;
+}
+
+.logout-btn{
+    background:#e74c3c;
+    color:white;
+    text-decoration:none;
+    padding:10px 18px;
+    border-radius:10px;
+    font-weight:600;
+}
+
+.logout-btn:hover{
+    background:#c0392b;
+}
+
+/* =========================
+   LOGIN & REGISTER
+========================= */
+
+.login-page{
+    background:#dbe5ff;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    min-height:100vh;
+    padding:20px;
+}
+
+.login-container{
+    width:100%;
+    max-width:1050px;
+    background:white;
+    border-radius:30px;
+    overflow:hidden;
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    box-shadow:0 15px 35px rgba(0,0,0,0.15);
+}
+
+.login-left{
+    background:#6d8eea;
+    color:white;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    padding:60px;
+    border-top-right-radius:180px;
+    border-bottom-right-radius:180px;
+}
+
+.login-left h1{
+    font-size:3rem;
+    margin-bottom:15px;
+}
+
+.login-left p{
+    font-size:1.1rem;
+    margin-bottom:30px;
+}
+
+.register-btn{
+    border:2px solid white;
+    color:white;
+    text-decoration:none;
+    padding:12px 28px;
+    border-radius:10px;
+    font-weight:600;
+}
+
+.login-right{
+    padding:60px;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+}
+
+.login-right h2{
+    text-align:center;
+    font-size:2.5rem;
+    margin-bottom:30px;
+}
+
+.login-right form{
+    display:flex;
+    flex-direction:column;
+    gap:18px;
+}
+
+.login-right input,
+.login-right select{
+    width:100%;
+    padding:14px;
+    border:none;
+    background:#f1f3f6;
+    border-radius:10px;
+    font-size:1rem;
+}
+
+.login-right button{
+    width:100%;
+    background:#6d8eea;
+    color:white;
+    border:none;
+    padding:14px;
+    border-radius:10px;
+    font-size:1rem;
+    font-weight:600;
+    cursor:pointer;
+}
+
+.login-right button:hover{
+    background:#5877d8;
+}
+
+/* =========================
+   DASHBOARD
+========================= */
+
+.dashboard-container{
+    width:95%;
+    margin:25px auto;
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+    gap:25px;
+}
+
+.card{
+    background:white;
+    border-radius:18px;
+    padding:28px;
+    box-shadow:0 10px 25px rgba(0,0,0,0.08);
+}
+
+.card h2{
+    margin-bottom:15px;
+    color:#32495f;
+}
+
+.card p{
+    margin-bottom:25px;
+    line-height:1.6;
+}
+
+.card button{
+    width:100%;
+    background:#1976f3;
+    color:white;
+    border:none;
+    padding:13px;
+    border-radius:10px;
+    font-size:1rem;
+    font-weight:600;
+    cursor:pointer;
+}
+
+.card button:hover{
+    background:#125fd0;
+}
+
+/* =========================
+   OUTPASS FORM
+========================= */
+
+.outpass-center{
+    min-height:calc(100vh - 120px);
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    padding:20px;
+}
+
+.form-card{
+    width:100%;
+    max-width:700px;
+    background:white;
+    border-radius:20px;
+    padding:35px;
+    box-shadow:0 10px 25px rgba(0,0,0,0.12);
+}
+
+.form-card h2{
+    text-align:center;
+    margin-bottom:25px;
+    color:#32495f;
+}
+
+.form-card form{
+    display:flex;
+    flex-direction:column;
+    gap:15px;
+}
+
+.form-card label{
+    font-weight:600;
+}
+
+.form-card input,
+.form-card select,
+.form-card textarea{
+    width:100%;
+    padding:14px;
+    border:1px solid #d8dde3;
+    border-radius:10px;
+    font-size:1rem;
+    background:#fafafa;
+}
+
+.form-card textarea{
+    min-height:120px;
+    resize:vertical;
+}
+
+.action-btn{
+    width:100%;
+    background:#1976f3;
+    color:white;
+    border:none;
+    padding:15px;
+    border-radius:10px;
+    font-size:1rem;
+    font-weight:600;
+    cursor:pointer;
+}
+
+.action-btn:hover{
+    background:#125fd0;
+}
+
+/* =========================
+   TABLES
+========================= */
+
+.table-container{
+    width:95%;
+    margin:25px auto;
+    overflow-x:auto;
+}
+
+table{
+    width:100%;
+    border-collapse:collapse;
+    background:white;
+    border-radius:14px;
+    overflow:hidden;
+    box-shadow:0 10px 24px rgba(0,0,0,0.08);
+}
+
+thead{
+    background:#32495f;
+    color:white;
+}
+
+th, td{
+    padding:14px;
+    text-align:center;
+    border-bottom:1px solid #e5e7eb;
+}
+
+tbody tr:nth-child(even){
+    background:#f8fafc;
+}
+
+tbody tr:hover{
+    background:#eef4ff;
+}
+
+/* =========================
+   STATUS
+========================= */
+
+.status-approved{
+    color:#16a34a;
+    font-weight:700;
+}
+
+.status-rejected{
+    color:#dc2626;
+    font-weight:700;
+}
+
+.status-pending{
+    color:#f59e0b;
+    font-weight:700;
+}
+
+/* =========================
+   ACTION BUTTONS
+========================= */
+
+.approve-btn,
+.reject-btn{
+    color:white;
+    border:none;
+    padding:10px 16px;
+    border-radius:8px;
+    cursor:pointer;
+    font-weight:600;
+}
+
+.approve-btn{
+    background:#16a34a;
+    margin-right:5px;
+}
+
+.approve-btn:hover{
+    background:#15803d;
+}
+
+.reject-btn{
+    background:#dc2626;
+}
+
+.reject-btn:hover{
+    background:#b91c1c;
+}
+
+/* =========================
+   MOBILE RESPONSIVE
+========================= */
+
+@media (max-width:768px){
+
+    .login-container{
+        grid-template-columns:1fr;
+    }
+
+    .login-left{
+        border-radius:0;
+        padding:40px 25px;
+    }
+
+    .login-left h1{
+        font-size:2rem;
+    }
+
+    .login-right{
+        padding:35px 25px;
+    }
+
+    .login-right h2{
+        font-size:2rem;
+    }
+
+    .navbar{
+        flex-direction:column;
+        text-align:center;
+        gap:12px;
+        padding:18px;
+    }
+
+    .navbar h1{
+        font-size:1.6rem;
+    }
+
+    .dashboard-container{
+        grid-template-columns:1fr;
+    }
+
+    .card{
+        padding:22px;
+    }
+
+    .form-card{
+        padding:25px;
+    }
+
+    th, td{
+        padding:10px;
+        font-size:0.9rem;
+    }
+
+    .approve-btn,
+    .reject-btn{
+        width:100%;
+        margin:4px 0;
+    }
+}
+
+.dashboard-number{
+    font-size:42px;
+    font-weight:bold;
+    color:#0b63ce;
+    margin:15px 0;
+}
+
+.search-form{
+    display:flex;
+    gap:10px;
+    margin-bottom:20px;
+    justify-content:flex-end;
+}
+
+.search-form input{
+    padding:10px;
+    width:260px;
+    border:1px solid #ccc;
+    border-radius:8px;
+}
+
+.search-form button{
+    padding:10px 18px;
+    border:none;
+    background:#0b63ce;
+    color:white;
+    border-radius:8px;
+    cursor:pointer;
+}
+
+.search-form button:hover{
+    background:#084ea3;
+}
+
+/* Small My Profile button in navbar */
+.profile-btn {
+    background: #3498db;
+    color: white;
+    text-decoration: none;
+    padding: 8px 16px;
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: bold;
+    margin-right: 10px;
+    transition: 0.3s;
+}
+
+.profile-btn:hover {
+    background: #2980b9;
+}
+
+/* ==========================
+   ADMIN ACTION BUTTONS
+========================== */
+
+.action-buttons {
+    display: flex;
+    gap: 8px;
+    justify-content: center;
+    align-items: center;
+}
+
+.edit-btn,
+.delete-btn {
+    text-decoration: none;
+    color: white;
+    padding: 8px 14px;
+    border-radius: 6px;
+    font-size: 13px;
+    font-weight: 600;
+    display: inline-block;
+    min-width: 70px;
+    text-align: center;
+    transition: 0.3s ease;
+}
+
+.edit-btn {
+    background: #3498db;
+}
+
+.edit-btn:hover {
+    background: #2980b9;
+}
+
+.delete-btn {
+    background: #e74c3c;
+}
+
+.delete-btn:hover {
+    background: #c0392b;
+}
+
+/* History Button */
+.history-btn {
+    background: #27ae60;
+    color: white;
+    text-decoration: none;
+    padding: 8px 14px;
+    border-radius: 6px;
+    font-size: 13px;
+    font-weight: 600;
+    display: inline-block;
+    min-width: 70px;
+    text-align: center;
+    transition: 0.3s ease;
+}
+
+.history-btn:hover {
+    background: #1e8449;
+}
+
+/* ==========================
+   STUDENT DASHBOARD NAVBAR
+========================== */
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.navbar-left {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.navbar-right {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.nav-profile-pic {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid white;
+}
+
+/* Warden Dashboard Navbar */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.navbar-left {
+    display: flex;
+    align-items: center;
+}
+
+.navbar-right {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.user-name {
+    color: white;
+    font-weight: 600;
+    font-size: 15px;
+}

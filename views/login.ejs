@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QuickPass Login</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body class="login-page">
+
+<div class="login-container">
+
+    <div class="login-left">
+        <h1>Hello, Welcome!</h1>
+        <p>Don't have an account?</p>
+        <a href="/register" class="register-btn">Register</a>
+    </div>
+
+    <div class="login-right">
+        <h2>Login</h2>
+
+        <form action="/login" method="POST">
+            <input type="text" name="regno" placeholder="Register Number" required>
+
+            <input type="password" name="password" placeholder="Password" required>
+
+            <select name="role" required>
+                <option value="">Select Role</option>
+                <option value="Student">Student</option>
+                <option value="Warden">Warden</option>
+                <option value="Security">Security</option>
+                <option value="Admin">Admin</option>
+            </select>
+
+            <button type="submit">Login</button>
+        </form>
+    </div>
+
+</div>
+
+</body>
+</html>

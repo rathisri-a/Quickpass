@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Outpass Requests</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+
+    <!-- Navigation Bar -->
+    <div class="navbar">
+        <h1>Outpass Requests</h1>
+        <a href="/warden-dashboard" class="logout-btn">Back</a>
+    </div>
+
+    <!-- Table Container -->
+    <div class="table-container">
+
+        <table>
+
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Register No</th>
+                    <th>Department</th>
+                    <th>Year</th>
+                    <th>Reason</th>
+                    <th>Out Date</th>
+                    <th>Return Date</th>
+                    <th>Status</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+
+            <tbody>
+
+                <% if (requests.length > 0) { %>
+
+                    <% requests.forEach(request => { %>
+
+                    <tr>
+
+                        <td><%= request.name %></td>
+
+                        <td><%= request.regno %></td>
+
+                        <td><%= request.department %></td>
+
+                        <td><%= request.year %></td>
+
+                        <td><%= request.reason %></td>
+
+                        <td>
+                            <%= request.out_date ? request.out_date.toISOString().split('T')[0] : '' %>
+                        </td>
+
+                        <td>
+                            <%= request.return_date ? request.return_date.toISOString().split('T')[0] : '' %>
+                        </td>
+
+                        <!-- STATUS -->
+                        <td>
+
+                            <% if (request.status === "Pending") { %>
+
+                                <span class="status-pending">Pending</span>
+
+                            <% } else if (request.status === "Approved") { %>
+
+                                <span class="status-approved">Approved</span>
+
+                            <% } else if (request.status === "Warden Verified") { %>
+
+                                <span class="status-approved">Warden Verified</span>
+
+                            <% } else if (request.status === "Rejected") { %>
+
+                                <span class="status-rejected">Rejected</span>
+
+                            <% } else { %>
+
+                                <%= request.status %>
+
+                            <% } %>
+
+                        </td>
+
+                        <!-- ACTIONS -->
+                        <td>
+
+                            <% if (request.status === "Pending") { %>
+
+                                <a href="/warden/approve/<%= request.id %>">
+                                    <button class="approve-btn">Approve</button>
+                                </a>
+
+                                <a href="/warden/reject/<%= request.id %>">
+                                    <button class="reject-btn">Reject</button>
+                                </a>
+
+                            <% } else if (request.status === "Approved") { %>
+
+                                <span>QR Generated</span>
+
+                            <% } else if (request.status === "Warden Verified") { %>
+
+                                <span>Verified by Warden</span>
+
+                            <% } else { %>
+
+                                <span>-</span>
+
+                            <% } %>
+
+                        </td>
+
+                    </tr>
+
+                    <% }) %>
+
+                <% } else { %>
+
+                    <tr>
+                        <td colspan="9">No outpass requests found.</td>
+                    </tr>
+
+                <% } %>
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+</body>
+</html>

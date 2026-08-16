@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QR Scan History</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+
+<div class="navbar">
+    <h1>QR Scan History</h1>
+    <a href="/admin-dashboard" class="logout-btn">Back</a>
+</div>
+
+<div class="table-container">
+
+<table>
+
+<thead>
+<tr>
+    <th>Student</th>
+    <th>Register No</th>
+    <th>Scanned By</th>
+    <th>Role</th>
+    <th>Scan Type</th>
+    <th>Date & Time</th>
+</tr>
+</thead>
+
+<tbody>
+
+<% if (scans.length > 0) { %>
+
+    <% scans.forEach(scan => { %>
+
+    <tr>
+
+        <td><%= scan.student_name %></td>
+
+        <td><%= scan.regno %></td>
+
+        <td><%= scan.scanned_by_name %></td>
+
+        <td><%= scan.scanned_by_role %></td>
+
+        <td><%= scan.scan_type %></td>
+
+        <td><%= scan.scanned_at.toLocaleString() %></td>
+
+    </tr>
+
+    <% }) %>
+
+<% } else { %>
+
+<tr>
+    <td colspan="6" style="text-align:center;">
+        No scan history available
+    </td>
+</tr>
+
+<% } %>
+
+</tbody>
+
+</table>
+
+</div>
+
+</body>
+</html>

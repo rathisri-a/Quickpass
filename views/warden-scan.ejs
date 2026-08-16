@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Warden QR Scanner</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <script src="https://unpkg.com/html5-qrcode"></script>
+</head>
+<body>
+
+    <!-- Navigation Bar -->
+    <div class="navbar">
+        <h1>Warden QR Scanner</h1>
+        <a href="/warden-dashboard" class="logout-btn">Back</a>
+    </div>
+
+    <!-- Scanner Card -->
+    <div class="outpass-center">
+        <div class="form-card">
+
+            <h2>Scan Student QR Code</h2>
+            <p style="text-align:center; color:#666;">
+                Point the camera at the student's approved QR code
+            </p>
+
+            <div id="reader" style="width:100%; margin-top:20px;"></div>
+
+            <p id="result"
+               style="text-align:center;
+                      margin-top:20px;
+                      font-weight:bold;
+                      color:#0b63ce;">
+            </p>
+
+        </div>
+    </div>
+
+<script>
+const result = document.getElementById("result");
+let scanning = true;
+
+function onScanSuccess(decodedText) {
+
+    if (!scanning) return;
+
+    scanning = false;
+
+    result.innerHTML = "QR Detected. Verifying...";
+
+    // Stop scanner after successful detection
+    html5QrCode.stop().then(() => {
+
+        fetch("/warden/verify", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: decodedText
+        })
+        .then(res => res.text())
+        .then(data => {
+
+            result.innerHTML = data;
+
+            // Restart scanner after 3 seconds
+            setTimeout(() => {
+
+                scanning = true;
+                result.innerHTML = "";
+
+                html5QrCode.start(
+                    cameraId,
+                    {
+                        fps: 10,
+                        qrbox: 250
+                    },
+                    onScanSuccess
+                );
+
+            }, 3000);
+
+        })
+        .catch(err => {
+            result.innerHTML = "Verification failed";
+            console.log(err);
+        });
+
+    });
+
+}
+
+let cameraId = null;
+
+const html5QrCode = new Html5Qrcode("reader");
+
+Html5Qrcode.getCameras()
+.then(cameras => {
+
+    if (cameras && cameras.length) {
+
+        cameraId = cameras[0].id;
+
+        html5QrCode.start(
+            cameraId,
+            {
+                fps: 10,
+                qrbox: 250
+            },
+            onScanSuccess
+        );
+
+    } else {
+
+        result.innerHTML = "No camera found";
+
+    }
+
+})
+.catch(err => {
+
+    result.innerHTML = "Camera error: " + err;
+
+});
+</script>
+
+</body>
+</html>

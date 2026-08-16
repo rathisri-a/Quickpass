@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Admin Dashboard</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+
+<div class="navbar">
+    <h1>QuickPass Admin Dashboard</h1>
+    <a href="/logout" class="logout-btn">Logout</a>
+</div>
+
+<div class="dashboard-container">
+
+    <div class="card">
+    <h2>Students Outside Hostel</h2>
+    <div class="dashboard-number"><%= outside %></div>
+    <p>Currently outside the hostel</p>
+
+    <a href="/admin/outside">
+        <button>View Students</button>
+    </a>
+    </div>
+
+    <div class="card">
+        <h2>Pending Approvals</h2>
+        <div class="dashboard-number"><%= pending %></div>
+        <p>Waiting for warden approval</p>
+    </div>
+
+    <div class="card">
+        <h2>Today's Exits</h2>
+        <div class="dashboard-number"><%= exits %></div>
+        <p>Students exited today</p>
+    </div>
+
+    <div class="card">
+        <h2>Today's Returns</h2>
+        <div class="dashboard-number"><%= returns %></div>
+        <p>Students returned today</p>
+    </div>
+
+    <div class="card">
+        <h2>Hostel Entry / Exit Logs</h2>
+        <p>View complete movement history of all students.</p>
+        <a href="/admin/logs">
+            <button>View Logs</button>
+        </a>
+    </div>
+
+    <div class="card">
+    <h2>QR Scan History</h2>
+    <p>View the complete audit trail of every QR scan.</p>
+    <a href="/admin/scan-history">
+        <button>View History</button>
+    </a>
+    </div>
+
+    <div class="card">
+    <h2>Manage Wardens</h2>
+    <p>Add, remove and manage lady wardens.</p>
+    <a href="/admin/wardens">
+        <button>Manage Wardens</button>
+    </a>
+    </div>
+
+    <div class="card">
+    <h2>Manage Security Staff</h2>
+    <p>Add and remove security personnel.</p>
+    <a href="/admin/security">
+        <button>Manage Security</button>
+    </a>
+    </div>
+
+    <div class="card">
+    <h2>Manage Students</h2>
+    <p>View, edit, and delete student profiles.</p>
+    <a href="/admin/students">
+        <button>Manage Students</button>
+    </a>
+    </div>
+
+</div>
+
+</body>
+</html>

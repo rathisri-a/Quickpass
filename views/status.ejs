@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Outpass Status</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+
+<div class="navbar">
+    <h1>Outpass Status</h1>
+    <a href="/dashboard" class="logout-btn">Back</a>
+</div>
+
+<div class="table-container">
+
+<table>
+
+    <thead>
+        <tr>
+            <th>Reason</th>
+            <th>Warden</th>
+            <th>Status</th>
+            <th>QR Code</th>
+        </tr>
+    </thead>
+
+    <tbody>
+
+    <% requests.forEach(request => { %>
+
+    <tr>
+
+        <td><%= request.reason %></td>
+
+        <td><%= request.warden_name || 'Not Assigned' %></td>
+
+        <td><%= request.status %></td>
+
+        <td>
+
+            <% 
+                const activeStatuses = [
+                    "Approved",
+                    "Warden Exit Verified",
+                    "Exited",
+                    "Security Entry Verified"
+                ];
+
+                if (activeStatuses.includes(request.status)) { 
+            %>
+
+                <img
+                    src="/qrcodes/<%= request.id %>.png"
+                    width="120"
+                    alt="QR Code"
+                >
+
+            <% } else if (request.status === "Return Completed") { %>
+
+                <span style="color:green;font-weight:bold;">
+                    Pass Completed
+                </span>
+
+            <% } else if (request.status === "Rejected") { %>
+
+                <span style="color:red;font-weight:bold;">
+                    Rejected
+                </span>
+
+            <% } else { %>
+
+                <span>Waiting for approval</span>
+
+            <% } %>
+
+        </td>
+
+    </tr>
+
+    <% }) %>
+
+    </tbody>
+
+</table>
+
+</div>
+
+</body>
+</html>

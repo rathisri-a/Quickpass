@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Manage Security Staff</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+
+<div class="navbar">
+    <h1>Manage Security Staff</h1>
+    <a href="/admin-dashboard" class="logout-btn">Back</a>
+</div>
+
+<div class="table-container">
+
+<h2>Add Security Staff</h2>
+
+<form action="/admin/security/add" method="POST" class="search-form">
+
+    <input type="text" name="name" placeholder="Staff Name" required>
+
+    <input type="text" name="username" placeholder="Username" required>
+
+    <input type="password" name="password" placeholder="Password" required>
+
+    <button type="submit">Add Staff</button>
+
+</form>
+
+<table>
+
+<thead>
+<tr>
+    <th>Name</th>
+    <th>Username</th>
+    <th>Action</th>
+</tr>
+</thead>
+
+<tbody>
+
+<% security.forEach(s => { %>
+
+<tr>
+
+    <td><%= s.name %></td>
+
+    <td><%= s.username %></td>
+
+    <td>
+        <a href="/admin/security/delete/<%= s.id %>">
+            <button class="reject-btn">Delete</button>
+        </a>
+    </td>
+
+</tr>
+
+<% }) %>
+
+</tbody>
+
+</table>
+
+</div>
+
+</body>
+</html>

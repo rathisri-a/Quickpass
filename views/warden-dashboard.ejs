@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Warden Dashboard</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+
+    <!-- Navigation Bar -->
+    <div class="navbar">
+
+        <!-- Left Side -->
+        <div class="navbar-left">
+            <h1>Warden Dashboard</h1>
+        </div>
+
+        <!-- Right Side -->
+        <div class="navbar-right">
+            <span class="user-name"><%= wardenName %></span>
+            <a href="/logout" class="logout-btn">Logout</a>
+        </div>
+
+    </div>
+
+    <!-- Dashboard Cards -->
+    <div class="dashboard-container">
+
+        <!-- Pending Requests -->
+        <div class="card">
+            <h2>Pending Requests</h2>
+            <p>View and manage all student outpass requests.</p>
+            <a href="/warden/requests">
+                <button>View Requests</button>
+            </a>
+        </div>
+
+        <!-- Approved Passes -->
+        <div class="card">
+            <h2>Approved Passes</h2>
+            <p>Check all approved outpasses and generated QR codes.</p>
+            <a href="/warden/requests">
+                <button>View Approved</button>
+            </a>
+        </div>
+
+        <!-- QR Verification -->
+        <div class="card">
+            <h2>QR Verification</h2>
+            <p>Scan the student QR code before allowing them to leave the hostel.</p>
+            <a href="/warden/scan">
+                <button>Open Scanner</button>
+            </a>
+        </div>
+
+    </div>
+
+</body>
+</html>

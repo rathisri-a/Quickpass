@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Dashboard</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+
+<!-- Top Navbar -->
+<div class="navbar">
+
+    <!-- Left side: Photo + Student Dashboard -->
+    <div class="navbar-left">
+
+        <% if (student.photo) { %>
+            <img src="/uploads/<%= student.photo %>" class="nav-profile-pic">
+        <% } else { %>
+            <img src="/uploads/default.png" class="nav-profile-pic">
+        <% } %>
+
+        <h1>Student Dashboard</h1>
+
+    </div>
+
+    <!-- Right side: Buttons -->
+    <div class="navbar-right">
+        <a href="/profile" class="profile-btn">My Profile</a>
+        <a href="/logout" class="logout-btn">Logout</a>
+    </div>
+
+</div>
+
+<!-- Dashboard -->
+<div class="dashboard-container">
+
+    <!-- Welcome Card -->
+    <div class="card">
+        <h2>Welcome, <%= student.name %></h2>
+
+        <p><strong>Register No:</strong> <%= student.regno %></p>
+        <p><strong>Department:</strong> <%= student.department %></p>
+        <p><strong>Year:</strong> <%= student.year %></p>
+        <p><strong>Room No:</strong> <%= student.room_number || 'Not Assigned' %></p>
+    </div>
+
+    <!-- Apply Outpass -->
+    <div class="card">
+        <h2>Apply Outpass</h2>
+        <p>Request a new outpass for leaving the campus.</p>
+        <a href="/outpass">
+            <button>Apply Outpass</button>
+        </a>
+    </div>
+
+    <!-- View Status -->
+    <div class="card">
+        <h2>View Status</h2>
+        <p>Check whether your outpass is pending, approved, rejected, or verified.</p>
+        <a href="/status">
+            <button>View Status</button>
+        </a>
+    </div>
+
+</div>
+
+</body>
+</html>

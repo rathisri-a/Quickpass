@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Student</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+
+<div class="navbar">
+    <h1>Edit Student</h1>
+    <a href="/admin/students" class="logout-btn">Back</a>
+</div>
+
+<div class="outpass-center">
+    <div class="form-card">
+
+        <h2>Update Student Details</h2>
+
+        <form action="/admin/students/edit/<%= student.regno %>" method="POST">
+
+            <label>Full Name</label>
+            <input type="text" value="<%= student.name %>" readonly>
+
+            <label>Register Number</label>
+            <input type="text" value="<%= student.regno %>" readonly>
+
+            <label>Department</label>
+            <input type="text" value="<%= student.department %>" readonly>
+
+            <label>Year</label>
+            <input type="text" value="<%= student.year %>" readonly>
+
+            <label>Room Number</label>
+            <input type="text"
+                   name="room_number"
+                   value="<%= student.room_number || '' %>"
+                   required>
+
+            <label>Parent Phone Number</label>
+            <input type="text"
+                   name="parent_phone"
+                   value="<%= student.parent_phone || '' %>"
+                   required>
+
+            <button type="submit" class="action-btn">
+                Update Student
+            </button>
+
+        </form>
+
+    </div>
+</div>
+
+</body>
+</html>

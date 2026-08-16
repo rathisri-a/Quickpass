@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manage Students</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+
+<div class="navbar">
+    <h1>Manage Students</h1>
+    <a href="/admin-dashboard" class="logout-btn">Back</a>
+</div>
+
+<div class="table-container">
+
+    <table>
+        <thead>
+            <tr>
+                <th>Photo</th>
+                <th>Name</th>
+                <th>Register No</th>
+                <th>Department</th>
+                <th>Year</th>
+                <th>Room No</th>
+                <th>Parent Phone</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+
+        <tbody>
+
+        <% students.forEach(student => { %>
+
+            <tr>
+
+                <td>
+                    <% if (student.photo) { %>
+                        <img src="/uploads/<%= student.photo %>"
+                             width="50"
+                             height="50"
+                             style="border-radius:50%; object-fit:cover;">
+                    <% } else { %>
+                        <img src="/uploads/default.png"
+                             width="50"
+                             height="50"
+                             style="border-radius:50%; object-fit:cover;">
+                    <% } %>
+                </td>
+
+                <td><%= student.name %></td>
+                <td><%= student.regno %></td>
+                <td><%= student.department %></td>
+                <td><%= student.year %></td>
+                <td><%= student.room_number || 'N/A' %></td>
+                <td><%= student.parent_phone || 'N/A' %></td>
+
+                <td class="action-buttons">
+
+                    <a href="/admin/students/history/<%= student.regno %>" class="history-btn">
+                        History
+                    </a>
+
+                    <a href="/admin/students/edit/<%= student.regno %>" class="edit-btn">
+                        Edit
+                    </a>
+
+                    <a href="/admin/students/delete/<%= student.regno %>"
+                        class="delete-btn"
+                        onclick="return confirm('Are you sure you want to delete this student?')">
+                        Delete
+                    </a>
+
+                </td>
+
+            </tr>
+
+        <% }) %>
+
+        </tbody>
+    </table>
+
+</div>
+
+</body>
+</html>

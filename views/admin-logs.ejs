@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Complete Entry / Exit Logs</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+
+<div class="navbar">
+    <h1>Complete Entry / Exit Logs</h1>
+    <a href="/admin-dashboard" class="logout-btn">Back</a>
+</div>
+
+<div class="table-container">
+
+<form method="GET" action="/admin/logs" class="search-form">
+    <input
+        type="text"
+        name="search"
+        placeholder="Search by Name or Register Number"
+        value="<%= search %>"
+    >
+    <button type="submit">Search</button>
+</form>
+
+<table>
+
+<thead>
+<tr>
+    <th>Name</th>
+    <th>Reg No</th>
+    <th>Warden</th>
+    <th>Warden Exit</th>
+    <th>Gate Exit</th>
+    <th>Gate Entry</th>
+    <th>Warden Return</th>
+    <th>Status</th>
+</tr>
+</thead>
+
+<tbody>
+
+<% if (logs.length > 0) { %>
+
+    <% logs.forEach(log => { %>
+
+    <tr>
+
+        <td><%= log.name %></td>
+
+        <td><%= log.regno %></td>
+
+        <td><%= log.warden_name || 'Not Assigned' %></td>
+
+        <td>
+            <%= log.warden_exit_verified_at
+                ? log.warden_exit_verified_at.toLocaleString()
+                : '-' %>
+        </td>
+
+        <td>
+            <%= log.security_exit_at
+                ? log.security_exit_at.toLocaleString()
+                : '-' %>
+        </td>
+
+        <td>
+            <%= log.security_entry_at
+                ? log.security_entry_at.toLocaleString()
+                : '-' %>
+        </td>
+
+        <td>
+            <%= log.warden_return_verified_at
+                ? log.warden_return_verified_at.toLocaleString()
+                : '-' %>
+        </td>
+
+        <td><%= log.status %></td>
+
+    </tr>
+
+    <% }) %>
+
+<% } else { %>
+
+<tr>
+    <td colspan="8" style="text-align:center;">
+        No records found
+    </td>
+</tr>
+
+<% } %>
+
+</tbody>
+
+</table>
+
+</div>
+
+</body>
+</html>

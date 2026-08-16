@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Profile</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+
+<div class="navbar">
+    <h1>My Profile</h1>
+    <a href="/dashboard" class="logout-btn">Back</a>
+</div>
+
+<div class="outpass-center">
+    <div class="form-card">
+
+        <h2>Student Profile</h2>
+
+        <!-- Profile Photo -->
+        <div style="text-align:center; margin-bottom:20px;">
+
+            <% if (student.photo) { %>
+                <img src="/uploads/<%= student.photo %>"
+                     alt="Profile Photo"
+                     width="140"
+                     height="140"
+                     style="border-radius:50%; object-fit:cover; border:3px solid #3498db;">
+            <% } else { %>
+                <img src="/uploads/default.png"
+                     alt="Profile Photo"
+                     width="140"
+                     height="140"
+                     style="border-radius:50%; object-fit:cover; border:3px solid #3498db;">
+            <% } %>
+
+        </div>
+
+        <!-- Photo Upload -->
+        <form action="/profile/photo" method="POST" enctype="multipart/form-data">
+
+            <label>Upload Profile Photo</label>
+            <input type="file" name="photo" accept="image/*">
+
+            <button type="submit" class="action-btn">
+                Upload Photo
+            </button>
+
+        </form>
+
+        <hr style="margin:25px 0;">
+
+        <!-- Profile Details -->
+        <form action="/profile" method="POST">
+
+            <label>Full Name</label>
+            <input type="text" value="<%= student.name %>" readonly>
+
+            <label>Register Number</label>
+            <input type="text" value="<%= student.regno %>" readonly>
+
+            <label>Department</label>
+            <input type="text" value="<%= student.department %>" readonly>
+
+            <label>Year</label>
+            <input type="text" value="<%= student.year %>" readonly>
+
+            <label>Room Number</label>
+            <input type="text"
+                   name="room_number"
+                   value="<%= student.room_number || '' %>"
+                   <%= student.room_number ? 'readonly' : '' %>
+                   required>
+
+            <label>Parent Phone Number</label>
+            <input type="text"
+                   name="parent_phone"
+                   value="<%= student.parent_phone || '' %>"
+                   <%= student.parent_phone ? 'readonly' : '' %>
+                   required>
+
+            <% if (!student.parent_phone || !student.room_number) { %>
+
+                <button type="submit" class="action-btn">
+                    Save Profile
+                </button>
+
+            <% } else { %>
+
+                <button type="button"
+                        class="action-btn"
+                        disabled>
+                    Profile Locked
+                </button>
+
+            <% } %>
+
+        </form>
+
+        <% if (student.parent_phone && student.room_number) { %>
+
+            <p style="color:green; text-align:center; margin-top:15px;">
+                Room number and parent phone number can only be updated by the Admin.
+            </p>
+
+        <% } %>
+
+    </div>
+</div>
+
+</body>
+</html>
